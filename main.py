@@ -1,40 +1,55 @@
 from stable_marriage import *
 
 def main():
-    print("=== Simulateur de l’algorithme du mariage stable ===")
+    print("=== Simulateur de l'algorithme du mariage stable ===\n")
 
-    nb_etudiants = int(input("Entrez le nombre d’étudiants : "))
-    nb_etablissements = int(input("Entrez le nombre d’établissements : "))
-    capacite = int(input("Entrez la capacité par établissement : "))
+    nb_etudiants = int(input("Nombre d'étudiants : "))
+    nb_etablissements = int(input("Nombre d'établissements : "))
+    capacite = int(input("Capacité par établissement : "))
+    
 
-    # Génération aléatoire des préférences
-    prefs_etudiants, prefs_etablissements, capacites = generer_preferences(nb_etudiants, nb_etablissements, capacite)
+    print("\nGénération des préférences...")
+    prefs_etudiants, prefs_etablissements, capacites = generer_preferences(
+        nb_etudiants, nb_etablissements, capacite
+    )
 
-    print("\n--- Préférences des étudiants ---")
-    for e in list(prefs_etudiants.keys())[:5]:
-        print(f"{e} : {prefs_etudiants[e]}")
-
+    print("--- Préférences des étudiants ---")
+    print(prefs_etudiants)
+    
     print("\n--- Préférences des établissements ---")
-    for etab in list(prefs_etablissements.keys())[:5]:
-        print(f"{etab} : {prefs_etablissements[etab]}")
-
-    # Exécution de l’algorithme de Gale–Shapley
+    print(prefs_etablissements)
+    
+    
+    print("Exécution de Gale-Shapley...\n")
     appariements = gale_shapley(prefs_etudiants, prefs_etablissements, capacites)
 
-    print("\n--- Résultats de l’appariement ---")
+
+    print("--- Appariements ---")
     for etab, etus in appariements.items():
-        print(f"{etab} ← {etus}")
+        print(f"{etab} : {etus}")
 
-    # Calcul des niveaux de satisfaction
-    moy_etu, moy_etab = calculer_satisfaction(appariements, prefs_etudiants, prefs_etablissements)
-    stable, paire = est_stable(appariements, prefs_etudiants, prefs_etablissements)
 
-    print("\n--- Statistiques finales ---")
-    print(f"Satisfaction moyenne des étudiants : {moy_etu:.3f}")
-    print(f"Satisfaction moyenne des établissements : {moy_etab:.3f}")
-    print(f"Appariement stable : {'Oui' if stable else 'Non'}")
-    if not stable:
-        print(f"Paire bloquante : {paire}")
+    k = int(input("Valeur de k pour Top-k : "))
+    print(f"Top-{k} : {top_k(appariements, prefs_etudiants, k)}")
+    
+    alpha = float(input("Poids α (Top-k) : "))
+    beta = float(input("Poids β (Satisfaction) : "))
+    gamma = float(input("Poids γ (Non-frustration) : "))
+
+
+    print("\n--- Résultats ---")
+    score, resultats = score_global(
+        appariements, prefs_etudiants, prefs_etablissements,
+        k, alpha, beta, gamma
+    )
+    
+    print(f"Score global : {score:.4f}")
+    print(f"Top-{k} : {resultats['Top_k']:.4f}")
+    print(f"Satisfaction étudiants : {resultats['Satisfaction_etudiants']:.4f}")
+    print(f"Satisfaction établissements : {resultats['Satisfaction_etablissements']:.4f}")
+    print(f"Moyenne harmonique : {resultats['Harmonic_mean']:.4f}")
+    print(f"Taux de frustration : {resultats['Frustration_rate']:.4f}")
+    print(f"Non-frustration : {resultats['Non_frustration']:.4f}")
 
 if __name__ == "__main__":
     main()

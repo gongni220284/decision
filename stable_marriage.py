@@ -1,4 +1,3 @@
-
 import random
 import pandas as pd
 
@@ -36,7 +35,7 @@ def gale_shapley(prefs_etudiants, prefs_etablissements, capacites):
             if len(appariements[eta]) < capacite:
                 appariements[eta].append(etu)
             else:
-                # sinon,comparer les preferences
+                # sinon, comparer les preferences
                 appariements[eta].append(etu)
                 appariements[eta].sort(key=lambda x: prefs_etablissements[eta].index(x))
                 pire = appariements[eta].pop()  
@@ -48,55 +47,162 @@ def gale_shapley(prefs_etudiants, prefs_etablissements, capacites):
     return appariements
 
 
-def calculer_satisfaction(appariements, prefs_etudiants, prefs_etablissements):
-#satisfaction etudiant:(nombre totale-rang)/nombre totale
-    satisfaction_etudiants = []
-    satisfaction_etablissements = []
+def top_k(appariements, prefs_etudiants, k):
+    nb_etudiants = len(prefs_etudiants)
+    count = 0
+    etu_eta = {}
+    for eta, etudiants_acceptes in appariements.items():
+        for etu in etudiants_acceptes:
+            etu_eta[etu] = eta
 
-    # etudiant
-    for etu in prefs_etudiants:
-        for eta, etus in appariements.items():
-            if etu in etus:
-                rang = prefs_etudiants[etu].index(eta)
-                satisfaction = (len(prefs_etudiants[etu]) - rang) / len(prefs_etudiants[etu])
-                satisfaction_etudiants.append(satisfaction)
-                break
-
-    # etablissement
-    for eta in prefs_etablissements:
-        for etu in appariements[eta]:
-            rang = prefs_etablissements[eta].index(etu)
-            satisfaction = (len(prefs_etablissements[eta]) - rang) / len(prefs_etablissements[eta])
-            satisfaction_etablissements.append(satisfaction)
-
-    moy_etu = sum(satisfaction_etudiants) / len(satisfaction_etudiants) if satisfaction_etudiants else 0
-    moy_eta = sum(satisfaction_etablissements) / len(satisfaction_etablissements) if satisfaction_etablissements else 0
-
-    return moy_etu, moy_eta
-
-
-def est_stable(appariements, prefs_etudiants, prefs_etablissements):
     for etu, prefs in prefs_etudiants.items():
-        for eta in prefs:
-            affecte = None
-            for eta_temp, etus_list in appariements.items():
-                if etu in etus_list:
-                    affecte = eta_temp
-                    break
+        # obtient l'établissement assigné à l'étudiant
+        eta_assigne = etu_eta.get(etu)
+        if eta_assigne is not None:
+            rang = prefs.index(eta_assigne) 
+            if rang + 1 <= k: 
+                count += 1
+    
+    tk = count / nb_etudiants
+    return tk
 
-            if affecte and prefs.index(eta) < prefs.index(affecte):
-                capacite = len(appariements[eta])
-                if capacite > 0:
-                    pire_etu = appariements[eta][0]
-                    pire_rang = prefs_etablissements[eta].index(pire_etu)
 
-                    for s in appariements[eta][1:]:
-                        s_rang = prefs_etablissements[eta].index(s)
-                        if s_rang > pire_rang:
-                            pire_rang = s_rang
-                            pire_etu = s
+def calculer_satisfaction(appariements, prefs_etudiants, prefs_etablissements):
+    etu_eta = {}
+    for eta, etudiants_acceptes in appariements.items():
+        for etu in etudiants_acceptes:
+            etu_eta[etu] = eta
+    
+    # Satisfaction moyenne des étudiants
+    satisfactions_etudiants = []
+    for etu, prefs in prefs_etudiants.items():
+        eta_assigne = etu_eta.get(etu)
 
-                    etu_rang = prefs_etablissements[eta].index(etu)
-                    if etu_rang < pire_rang:
-                        return False, (etu, eta)
-    return True, None
+        if eta_assigne is not None:
+            r_i = prefs.index(eta_assigne)
+            n_i = len(prefs)
+            if n_i > 1:
+                s_i = (n_i - 1 - r_i) / (n_i - 1)
+            else:
+                s_i = 1.0  
+            satisfactions_etudiants.append(s_i)
+        else:
+            # Étudiant non assigné 
+            satisfactions_etudiants.append(0.0)
+    
+    nb_etudiants = len(prefs_etudiants)
+    S_etudiants = sum(satisfactions_etudiants) / nb_etudiants
+    satisfactions_par_etablissement = []
+    
+    for eta, etudiants_acceptes in appariements.items():
+        if len(etudiants_acceptes) > 0:
+            prefs = prefs_etablissements[eta]
+            satisfactions_eta = []
+            
+            for etu in etudiants_acceptes:
+                r_s = prefs.index(etu)
+                n_s = len(prefs)
+                if n_s > 1:
+                    s_s = (n_s - 1 - r_s) / (n_s - 1)
+                else:
+                    s_s = 1.0
+                satisfactions_eta.append(s_s)
+            
+            satisfactions_par_etablissement.append(sum(satisfactions_eta) / len(satisfactions_eta))
+        else:
+            # Établissement sans étudiant
+            satisfactions_par_etablissement.append(0.0)
+    
+    nb_etablissements = len(prefs_etablissements)
+    S_etablissements = sum(satisfactions_par_etablissement) / nb_etablissements
+    
+    if S_etudiants > 0 and S_etablissements > 0:
+        H = (2 * S_etudiants * S_etablissements) / (S_etudiants + S_etablissements)
+    else:
+        H = 0
+    
+    return S_etudiants, S_etablissements, H
+
+
+def calculer_frustration(appariements, prefs_etudiants, prefs_etablissements):
+    etu_eta = {}
+    for eta, etudiants_acceptes in appariements.items():
+        for etu in etudiants_acceptes:
+            etu_eta[etu] = eta
+    
+    frustrations = []
+    
+    for etu, prefs in prefs_etudiants.items():
+        eta_assigne = etu_eta.get(etu)
+        
+        if eta_assigne is not None:
+            rank_assigned = prefs.index(eta_assigne)
+            A_i_rejected = set(prefs[:rank_assigned])
+        else:
+            # Étudiant non assigné -> tous les établissements sont "rejetés"
+            A_i_rejected = set(prefs)
+        
+        B_i = set()
+        for eta_rejected in A_i_rejected:
+            students_accepted = appariements[eta_rejected]
+            eta_prefs = prefs_etablissements[eta_rejected]
+            
+            # Vérifier si l'étudiant est dans les préférences de cet établissement
+            if etu in eta_prefs:
+                etu_rank = eta_prefs.index(etu)
+                for etu_accepted in students_accepted:
+                    if etu_accepted in eta_prefs:
+                        accepted_rank = eta_prefs.index(etu_accepted)
+                        if etu_rank < accepted_rank:
+                            B_i.add(eta_rejected)
+                            break  
+        
+        if len(A_i_rejected) > 0:
+            f_i = len(B_i) / len(A_i_rejected)
+        else:
+            f_i = 0.0  
+        
+        frustrations.append(f_i)
+    
+    nb_etudiants = len(prefs_etudiants)
+    F_bar = sum(frustrations) / nb_etudiants
+    F = 1 - F_bar
+    
+    return F_bar, F
+
+
+def score_global(appariements, prefs_etudiants, prefs_etablissements, k, alpha, beta, gamma):
+    # Vérifier que les poids somment à 1
+    if abs(alpha + beta + gamma - 1) > 1e-9:
+        raise ValueError(f"La somme des poids doit être égale à 1 (actuel: {alpha + beta + gamma})")
+    
+    tk = top_k(appariements, prefs_etudiants, k)
+    
+    S_etudiants, S_etablissements, H = calculer_satisfaction(
+        appariements, prefs_etudiants, prefs_etablissements
+    )
+    
+    F_bar, F = calculer_frustration(
+        appariements, prefs_etudiants, prefs_etablissements
+    )
+    
+    score_global = alpha * tk + beta * H + gamma * F
+    
+    resultats = {
+        'Top_k': tk,
+        'Satisfaction_etudiants': S_etudiants,
+        'Satisfaction_etablissements': S_etablissements,
+        'Harmonic_mean': H,
+        'Frustration_rate': F_bar,
+        'Non_frustration': F,
+        'Global_score': score_global,
+        'Weight_alpha': alpha,
+        'Weight_beta': beta,
+        'Weight_gamma': gamma,
+        'k_value': k
+    }
+    
+    return score_global, resultats
+
+
+    

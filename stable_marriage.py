@@ -139,7 +139,7 @@ def calculer_frustration(appariements, prefs_etudiants, prefs_etablissements):
             rank_assigned = prefs.index(eta_assigne)
             A_i_rejected = set(prefs[:rank_assigned])
         else:
-            # Étudiant non assigné -> tous les établissements sont "rejetés"
+            # Étudiant non assigné  tous les établissements sont rejetés
             A_i_rejected = set(prefs)
         
         B_i = set()
@@ -147,7 +147,6 @@ def calculer_frustration(appariements, prefs_etudiants, prefs_etablissements):
             students_accepted = appariements[eta_rejected]
             eta_prefs = prefs_etablissements[eta_rejected]
             
-            # Vérifier si l'étudiant est dans les préférences de cet établissement
             if etu in eta_prefs:
                 etu_rank = eta_prefs.index(etu)
                 for etu_accepted in students_accepted:

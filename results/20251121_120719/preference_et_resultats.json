@@ -1,0 +1,101 @@
+{
+  "preferences": {
+    "etudiants": {
+      "Éloïse Lemoine": [
+        "Université de Franche-Comté (UFC)",
+        "Université de Rennes",
+        "Université de Limoges"
+      ],
+      "Pierre Colas": [
+        "Université de Franche-Comté (UFC)",
+        "Université de Rennes",
+        "Université de Limoges"
+      ],
+      "Benjamin Fontaine": [
+        "Université de Rennes",
+        "Université de Limoges",
+        "Université de Franche-Comté (UFC)"
+      ]
+    },
+    "etablissements": {
+      "Université de Franche-Comté (UFC)": [
+        "Pierre Colas",
+        "Benjamin Fontaine",
+        "Éloïse Lemoine"
+      ],
+      "Université de Limoges": [
+        "Éloïse Lemoine",
+        "Pierre Colas",
+        "Benjamin Fontaine"
+      ],
+      "Université de Rennes": [
+        "Benjamin Fontaine",
+        "Éloïse Lemoine",
+        "Pierre Colas"
+      ]
+    },
+    "capacites": {
+      "Université de Franche-Comté (UFC)": 1,
+      "Université de Limoges": 1,
+      "Université de Rennes": 1
+    }
+  },
+  "matchings": {
+    "etudiant_optimal": {
+      "Université de Franche-Comté (UFC)": [
+        "Pierre Colas"
+      ],
+      "Université de Limoges": [
+        "Éloïse Lemoine"
+      ],
+      "Université de Rennes": [
+        "Benjamin Fontaine"
+      ]
+    },
+    "universite_optimal": {
+      "Université de Franche-Comté (UFC)": [
+        "Pierre Colas"
+      ],
+      "Université de Limoges": [
+        "Éloïse Lemoine"
+      ],
+      "Université de Rennes": [
+        "Benjamin Fontaine"
+      ]
+    }
+  },
+  "scores": {
+    "student_optimal": {
+      "score_final": 0.8555555555555556,
+      "topk_global": 0.8888888888888888,
+      "satisfaction_croisee": 0.6666666666666666,
+      "regret_global": 0.0,
+      "optimality": 1.0,
+      "details": {
+        "topk_etu": 0.7777777777777778,
+        "topk_uni": 1.0,
+        "stab_etu": 0.0,
+        "stab_uni": 0.0,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    },
+    "university_optimal": {
+      "score_final": 0.8555555555555556,
+      "topk_global": 0.8888888888888888,
+      "satisfaction_croisee": 0.6666666666666666,
+      "regret_global": 0.0,
+      "optimality": 1.0,
+      "details": {
+        "topk_etu": 0.7777777777777778,
+        "topk_uni": 1.0,
+        "stab_etu": 0.0,
+        "stab_uni": 0.0,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    }
+  }
+}

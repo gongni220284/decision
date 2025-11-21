@@ -1,0 +1,413 @@
+{
+  "preferences": {
+    "etudiants": {
+      "Chloé Moreau": [
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de Montpellier",
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Guyane",
+        "Université de la Polynésie Française (UPF)",
+        "École Centrale de Nantes",
+        "Université Paris Nanterre",
+        "Nantes Université",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)"
+      ],
+      "Audrey Benoît": [
+        "Université de la Polynésie Française (UPF)",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université de Montpellier",
+        "École Centrale de Nantes",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Nantes Université",
+        "Université de Guyane",
+        "Université Paris Nanterre",
+        "Université Toulouse III - Paul Sabatier",
+        "Université Paris 2 Panthéon-Assas"
+      ],
+      "Adam Petit": [
+        "Université de Guyane",
+        "Université Paris Nanterre",
+        "Université de la Polynésie Française (UPF)",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Nantes Université",
+        "Université Paris 2 Panthéon-Assas",
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université de Montpellier",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "École Centrale de Nantes"
+      ],
+      "Léo Dubois": [
+        "Université de Guyane",
+        "Université Paris Nanterre",
+        "Université Toulouse III - Paul Sabatier",
+        "Université Paris 2 Panthéon-Assas",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Nantes Université",
+        "École Centrale de Nantes",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de la Polynésie Française (UPF)",
+        "Université de Montpellier"
+      ],
+      "Raphaël Dupond": [
+        "Université Paris Nanterre",
+        "Université de Montpellier",
+        "Université de la Polynésie Française (UPF)",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Nantes Université",
+        "Université Paris 2 Panthéon-Assas",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "École Centrale de Nantes",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Guyane"
+      ],
+      "Théo Richard": [
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université Paris Nanterre",
+        "École Centrale de Nantes",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de Montpellier",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université de la Polynésie Française (UPF)",
+        "Nantes Université",
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Guyane",
+        "Université Paris 2 Panthéon-Assas"
+      ],
+      "Manon Dubois": [
+        "Université de la Polynésie Française (UPF)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Guyane",
+        "Université Toulouse III - Paul Sabatier",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "École Centrale de Nantes",
+        "Nantes Université",
+        "Université de Montpellier",
+        "Université Paris Nanterre",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Polytechnique Hauts-de-France (UPHF)"
+      ],
+      "Ambre Hubert": [
+        "Université de la Polynésie Française (UPF)",
+        "Université de Guyane",
+        "Université de Montpellier",
+        "École Centrale de Nantes",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université Paris Nanterre",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Toulouse III - Paul Sabatier",
+        "Nantes Université",
+        "Université Polytechnique Hauts-de-France (UPHF)"
+      ],
+      "Clément Bébou": [
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Montpellier",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université Paris Nanterre",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université de Guyane",
+        "École Centrale de Nantes",
+        "Nantes Université",
+        "Université de la Polynésie Française (UPF)",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Paris 2 Panthéon-Assas"
+      ],
+      "Adèle Mercier": [
+        "Université Toulouse III - Paul Sabatier",
+        "Nantes Université",
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université de Guyane",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "École Centrale de Nantes",
+        "Université de Montpellier",
+        "Université Paris Nanterre",
+        "Université de la Polynésie Française (UPF)",
+        "Université Paris 2 Panthéon-Assas"
+      ],
+      "David Benoît": [
+        "Centre Universitaire de Mayotte (CUFR)",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de la Polynésie Française (UPF)",
+        "Université de Guyane",
+        "Nantes Université",
+        "Université Toulouse III - Paul Sabatier",
+        "Université de Technologie de Belfort-Montbéliard (UTBM)",
+        "Université Paris Nanterre",
+        "École Centrale de Nantes",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Montpellier"
+      ]
+    },
+    "etablissements": {
+      "Centre Universitaire de Mayotte (CUFR)": [
+        "Clément Bébou",
+        "Raphaël Dupond",
+        "Chloé Moreau",
+        "Léo Dubois",
+        "Audrey Benoît",
+        "Adèle Mercier",
+        "Théo Richard",
+        "Adam Petit",
+        "Manon Dubois",
+        "David Benoît",
+        "Ambre Hubert"
+      ],
+      "Nantes Université": [
+        "Adam Petit",
+        "Raphaël Dupond",
+        "David Benoît",
+        "Clément Bébou",
+        "Manon Dubois",
+        "Léo Dubois",
+        "Audrey Benoît",
+        "Théo Richard",
+        "Adèle Mercier",
+        "Ambre Hubert",
+        "Chloé Moreau"
+      ],
+      "Université de Montpellier": [
+        "Ambre Hubert",
+        "Raphaël Dupond",
+        "Léo Dubois",
+        "Chloé Moreau",
+        "David Benoît",
+        "Clément Bébou",
+        "Audrey Benoît",
+        "Manon Dubois",
+        "Théo Richard",
+        "Adèle Mercier",
+        "Adam Petit"
+      ],
+      "Université de Technologie de Belfort-Montbéliard (UTBM)": [
+        "Théo Richard",
+        "Clément Bébou",
+        "Adam Petit",
+        "Manon Dubois",
+        "Chloé Moreau",
+        "Léo Dubois",
+        "Adèle Mercier",
+        "Raphaël Dupond",
+        "David Benoît",
+        "Audrey Benoît",
+        "Ambre Hubert"
+      ],
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Audrey Benoît",
+        "Adèle Mercier",
+        "Adam Petit",
+        "Ambre Hubert",
+        "Léo Dubois",
+        "Chloé Moreau",
+        "David Benoît",
+        "Raphaël Dupond",
+        "Manon Dubois",
+        "Théo Richard",
+        "Clément Bébou"
+      ],
+      "Université Toulouse III - Paul Sabatier": [
+        "Théo Richard",
+        "Adam Petit",
+        "Adèle Mercier",
+        "Raphaël Dupond",
+        "Manon Dubois",
+        "Chloé Moreau",
+        "Audrey Benoît",
+        "David Benoît",
+        "Clément Bébou",
+        "Ambre Hubert",
+        "Léo Dubois"
+      ],
+      "École Centrale de Nantes": [
+        "Adam Petit",
+        "Manon Dubois",
+        "Chloé Moreau",
+        "Ambre Hubert",
+        "Théo Richard",
+        "Clément Bébou",
+        "Léo Dubois",
+        "Raphaël Dupond",
+        "Audrey Benoît",
+        "David Benoît",
+        "Adèle Mercier"
+      ],
+      "Université Paris Nanterre": [
+        "Clément Bébou",
+        "Théo Richard",
+        "Manon Dubois",
+        "David Benoît",
+        "Ambre Hubert",
+        "Raphaël Dupond",
+        "Chloé Moreau",
+        "Audrey Benoît",
+        "Léo Dubois",
+        "Adèle Mercier",
+        "Adam Petit"
+      ],
+      "Université de la Polynésie Française (UPF)": [
+        "Ambre Hubert",
+        "Raphaël Dupond",
+        "Léo Dubois",
+        "Clément Bébou",
+        "Manon Dubois",
+        "David Benoît",
+        "Adam Petit",
+        "Chloé Moreau",
+        "Adèle Mercier",
+        "Théo Richard",
+        "Audrey Benoît"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "Ambre Hubert",
+        "Adam Petit",
+        "Raphaël Dupond",
+        "Clément Bébou",
+        "Adèle Mercier",
+        "Audrey Benoît",
+        "David Benoît",
+        "Théo Richard",
+        "Léo Dubois",
+        "Chloé Moreau",
+        "Manon Dubois"
+      ],
+      "Université de Guyane": [
+        "Raphaël Dupond",
+        "Chloé Moreau",
+        "Adam Petit",
+        "David Benoît",
+        "Ambre Hubert",
+        "Audrey Benoît",
+        "Clément Bébou",
+        "Léo Dubois",
+        "Manon Dubois",
+        "Théo Richard",
+        "Adèle Mercier"
+      ]
+    },
+    "capacites": {
+      "Centre Universitaire de Mayotte (CUFR)": 1,
+      "Nantes Université": 1,
+      "Université de Montpellier": 1,
+      "Université de Technologie de Belfort-Montbéliard (UTBM)": 1,
+      "Université Polytechnique Hauts-de-France (UPHF)": 1,
+      "Université Toulouse III - Paul Sabatier": 1,
+      "École Centrale de Nantes": 1,
+      "Université Paris Nanterre": 1,
+      "Université de la Polynésie Française (UPF)": 1,
+      "Université Paris 2 Panthéon-Assas": 1,
+      "Université de Guyane": 1
+    }
+  },
+  "matchings": {
+    "etudiant_optimal": {
+      "Centre Universitaire de Mayotte (CUFR)": [
+        "Audrey Benoît"
+      ],
+      "Nantes Université": [
+        "David Benoît"
+      ],
+      "Université de Montpellier": [
+        "Raphaël Dupond"
+      ],
+      "Université de Technologie de Belfort-Montbéliard (UTBM)": [
+        "Théo Richard"
+      ],
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Chloé Moreau"
+      ],
+      "Université Toulouse III - Paul Sabatier": [
+        "Adèle Mercier"
+      ],
+      "École Centrale de Nantes": [
+        "Manon Dubois"
+      ],
+      "Université Paris Nanterre": [
+        "Clément Bébou"
+      ],
+      "Université de la Polynésie Française (UPF)": [
+        "Ambre Hubert"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "Léo Dubois"
+      ],
+      "Université de Guyane": [
+        "Adam Petit"
+      ]
+    },
+    "universite_optimal": {
+      "Centre Universitaire de Mayotte (CUFR)": [
+        "Léo Dubois"
+      ],
+      "Nantes Université": [
+        "Adam Petit"
+      ],
+      "Université de Montpellier": [
+        "Raphaël Dupond"
+      ],
+      "Université de Technologie de Belfort-Montbéliard (UTBM)": [
+        "Théo Richard"
+      ],
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Audrey Benoît"
+      ],
+      "Université Toulouse III - Paul Sabatier": [
+        "Adèle Mercier"
+      ],
+      "École Centrale de Nantes": [
+        "Manon Dubois"
+      ],
+      "Université Paris Nanterre": [
+        "Clément Bébou"
+      ],
+      "Université de la Polynésie Française (UPF)": [
+        "Ambre Hubert"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "David Benoît"
+      ],
+      "Université de Guyane": [
+        "Chloé Moreau"
+      ]
+    }
+  },
+  "scores": {
+    "student_optimal": {
+      "score_final": 0.7024209320091672,
+      "topk_global": 0.48484848484848486,
+      "satisfaction_croisee": 0.7449384602325778,
+      "regret_global": 0.05,
+      "optimality": 0.95,
+      "details": {
+        "topk_etu": 0.4848484848484849,
+        "topk_uni": 0.4848484848484848,
+        "stab_etu": 0.0,
+        "stab_uni": 0.1,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    },
+    "university_optimal": {
+      "score_final": 0.7154253442635796,
+      "topk_global": 0.4545454545454546,
+      "satisfaction_croisee": 0.7286905414846591,
+      "regret_global": -0.05,
+      "optimality": 1.05,
+      "details": {
+        "topk_etu": 0.24242424242424246,
+        "topk_uni": 0.6666666666666667,
+        "stab_etu": 0.0,
+        "stab_uni": -0.1,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    }
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "preferences": {
+    "etudiants": {
+      "Agathe Masson": [
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université Paris Cité",
+        "Université des Antilles",
+        "Université de Corse Pasquale Paoli",
+        "Institut Catholique de Lyon (UCLy)",
+        "Institut National Universitaire Champollion",
+        "Institut Catholique de Paris (ICP)",
+        "Université Jean Moulin Lyon 3",
+        "Université de Toulon",
+        "Université d'Artois"
+      ],
+      "Olivier Leroux": [
+        "Université de Toulon",
+        "Université Jean Moulin Lyon 3",
+        "Institut Catholique de Paris (ICP)",
+        "Université d'Artois",
+        "Université des Antilles",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de Corse Pasquale Paoli",
+        "Université Paris Cité",
+        "Institut National Universitaire Champollion",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Paris 2 Panthéon-Assas"
+      ],
+      "Cécile Vidal": [
+        "Institut National Universitaire Champollion",
+        "Université Paris 2 Panthéon-Assas",
+        "Institut Catholique de Paris (ICP)",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université d'Artois",
+        "Université Paris Cité",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université de Corse Pasquale Paoli",
+        "Université de Toulon",
+        "Université des Antilles",
+        "Université Jean Moulin Lyon 3"
+      ],
+      "Alice Dupond": [
+        "Université d'Artois",
+        "Institut National Universitaire Champollion",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université Jean Moulin Lyon 3",
+        "Université Paris Cité",
+        "Institut Catholique de Paris (ICP)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Toulon",
+        "Université de Corse Pasquale Paoli",
+        "Université des Antilles",
+        "Institut Catholique de Lyon (UCLy)"
+      ],
+      "Mathilde Roux": [
+        "Université de Toulon",
+        "Université des Antilles",
+        "Institut National Universitaire Champollion",
+        "Université d'Artois",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université de Corse Pasquale Paoli",
+        "Université Jean Moulin Lyon 3",
+        "Institut Catholique de Paris (ICP)",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Paris Cité"
+      ],
+      "Diane Morin": [
+        "Université de Toulon",
+        "Université Paris 2 Panthéon-Assas",
+        "Institut National Universitaire Champollion",
+        "Université Jean Moulin Lyon 3",
+        "Institut Catholique de Paris (ICP)",
+        "Université Paris Cité",
+        "Université des Antilles",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université de Corse Pasquale Paoli",
+        "Université d'Artois",
+        "Institut Catholique de Lyon (UCLy)"
+      ],
+      "Lina Meunier": [
+        "Institut Catholique de Paris (ICP)",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université Paris Cité",
+        "Université Jean Moulin Lyon 3",
+        "Université de Corse Pasquale Paoli",
+        "Université des Antilles",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université d'Artois",
+        "Institut National Universitaire Champollion",
+        "Université de Toulon"
+      ],
+      "Laura Meyer": [
+        "Université d'Artois",
+        "Institut Catholique de Paris (ICP)",
+        "Université Paris 2 Panthéon-Assas",
+        "Université Paris Cité",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Jean Moulin Lyon 3",
+        "Université de Toulon",
+        "Institut National Universitaire Champollion",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université des Antilles",
+        "Université de Corse Pasquale Paoli"
+      ],
+      "Paul Perrin": [
+        "Institut National Universitaire Champollion",
+        "Université Paris Cité",
+        "Université Paris 2 Panthéon-Assas",
+        "Institut Catholique de Paris (ICP)",
+        "Université de Toulon",
+        "Université de Corse Pasquale Paoli",
+        "Université Jean Moulin Lyon 3",
+        "Université d'Artois",
+        "Université des Antilles",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Polytechnique Hauts-de-France (UPHF)"
+      ],
+      "Bastien Jacquet": [
+        "Université de Corse Pasquale Paoli",
+        "Université Paris 2 Panthéon-Assas",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Institut Catholique de Paris (ICP)",
+        "Université Paris Cité",
+        "Université de Toulon",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université Jean Moulin Lyon 3",
+        "Institut National Universitaire Champollion",
+        "Université des Antilles",
+        "Université d'Artois"
+      ],
+      "Yanis Carron": [
+        "Université Paris 2 Panthéon-Assas",
+        "Université des Antilles",
+        "Institut National Universitaire Champollion",
+        "Université de Corse Pasquale Paoli",
+        "Institut Catholique de Paris (ICP)",
+        "Université Jean Moulin Lyon 3",
+        "Université Polytechnique Hauts-de-France (UPHF)",
+        "Université Paris Cité",
+        "Université de Toulon",
+        "Institut Catholique de Lyon (UCLy)",
+        "Université d'Artois"
+      ]
+    },
+    "etablissements": {
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Yanis Carron",
+        "Mathilde Roux",
+        "Paul Perrin",
+        "Lina Meunier",
+        "Laura Meyer",
+        "Cécile Vidal",
+        "Bastien Jacquet",
+        "Olivier Leroux",
+        "Diane Morin",
+        "Agathe Masson",
+        "Alice Dupond"
+      ],
+      "Institut Catholique de Paris (ICP)": [
+        "Cécile Vidal",
+        "Olivier Leroux",
+        "Agathe Masson",
+        "Paul Perrin",
+        "Laura Meyer",
+        "Diane Morin",
+        "Alice Dupond",
+        "Lina Meunier",
+        "Mathilde Roux",
+        "Yanis Carron",
+        "Bastien Jacquet"
+      ],
+      "Université des Antilles": [
+        "Agathe Masson",
+        "Diane Morin",
+        "Olivier Leroux",
+        "Cécile Vidal",
+        "Laura Meyer",
+        "Paul Perrin",
+        "Lina Meunier",
+        "Mathilde Roux",
+        "Alice Dupond",
+        "Yanis Carron",
+        "Bastien Jacquet"
+      ],
+      "Université d'Artois": [
+        "Diane Morin",
+        "Bastien Jacquet",
+        "Olivier Leroux",
+        "Lina Meunier",
+        "Yanis Carron",
+        "Alice Dupond",
+        "Cécile Vidal",
+        "Laura Meyer",
+        "Agathe Masson",
+        "Mathilde Roux",
+        "Paul Perrin"
+      ],
+      "Institut Catholique de Lyon (UCLy)": [
+        "Olivier Leroux",
+        "Diane Morin",
+        "Mathilde Roux",
+        "Paul Perrin",
+        "Bastien Jacquet",
+        "Laura Meyer",
+        "Agathe Masson",
+        "Cécile Vidal",
+        "Lina Meunier",
+        "Yanis Carron",
+        "Alice Dupond"
+      ],
+      "Université Paris Cité": [
+        "Agathe Masson",
+        "Bastien Jacquet",
+        "Paul Perrin",
+        "Lina Meunier",
+        "Cécile Vidal",
+        "Mathilde Roux",
+        "Laura Meyer",
+        "Olivier Leroux",
+        "Diane Morin",
+        "Yanis Carron",
+        "Alice Dupond"
+      ],
+      "Université Jean Moulin Lyon 3": [
+        "Alice Dupond",
+        "Paul Perrin",
+        "Diane Morin",
+        "Yanis Carron",
+        "Olivier Leroux",
+        "Mathilde Roux",
+        "Cécile Vidal",
+        "Laura Meyer",
+        "Lina Meunier",
+        "Agathe Masson",
+        "Bastien Jacquet"
+      ],
+      "Université de Toulon": [
+        "Mathilde Roux",
+        "Yanis Carron",
+        "Alice Dupond",
+        "Olivier Leroux",
+        "Paul Perrin",
+        "Cécile Vidal",
+        "Lina Meunier",
+        "Bastien Jacquet",
+        "Laura Meyer",
+        "Agathe Masson",
+        "Diane Morin"
+      ],
+      "Institut National Universitaire Champollion": [
+        "Olivier Leroux",
+        "Bastien Jacquet",
+        "Cécile Vidal",
+        "Laura Meyer",
+        "Lina Meunier",
+        "Yanis Carron",
+        "Mathilde Roux",
+        "Agathe Masson",
+        "Alice Dupond",
+        "Paul Perrin",
+        "Diane Morin"
+      ],
+      "Université de Corse Pasquale Paoli": [
+        "Lina Meunier",
+        "Diane Morin",
+        "Agathe Masson",
+        "Yanis Carron",
+        "Bastien Jacquet",
+        "Paul Perrin",
+        "Laura Meyer",
+        "Mathilde Roux",
+        "Cécile Vidal",
+        "Alice Dupond",
+        "Olivier Leroux"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "Lina Meunier",
+        "Agathe Masson",
+        "Yanis Carron",
+        "Alice Dupond",
+        "Cécile Vidal",
+        "Diane Morin",
+        "Paul Perrin",
+        "Olivier Leroux",
+        "Laura Meyer",
+        "Mathilde Roux",
+        "Bastien Jacquet"
+      ]
+    },
+    "capacites": {
+      "Université Polytechnique Hauts-de-France (UPHF)": 1,
+      "Institut Catholique de Paris (ICP)": 1,
+      "Université des Antilles": 1,
+      "Université d'Artois": 1,
+      "Institut Catholique de Lyon (UCLy)": 1,
+      "Université Paris Cité": 1,
+      "Université Jean Moulin Lyon 3": 1,
+      "Université de Toulon": 1,
+      "Institut National Universitaire Champollion": 1,
+      "Université de Corse Pasquale Paoli": 1,
+      "Université Paris 2 Panthéon-Assas": 1
+    }
+  },
+  "matchings": {
+    "etudiant_optimal": {
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Agathe Masson"
+      ],
+      "Institut Catholique de Paris (ICP)": [
+        "Olivier Leroux"
+      ],
+      "Université des Antilles": [
+        "Yanis Carron"
+      ],
+      "Université d'Artois": [
+        "Alice Dupond"
+      ],
+      "Institut Catholique de Lyon (UCLy)": [
+        "Laura Meyer"
+      ],
+      "Université Paris Cité": [
+        "Paul Perrin"
+      ],
+      "Université Jean Moulin Lyon 3": [
+        "Diane Morin"
+      ],
+      "Université de Toulon": [
+        "Mathilde Roux"
+      ],
+      "Institut National Universitaire Champollion": [
+        "Cécile Vidal"
+      ],
+      "Université de Corse Pasquale Paoli": [
+        "Bastien Jacquet"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "Lina Meunier"
+      ]
+    },
+    "universite_optimal": {
+      "Université Polytechnique Hauts-de-France (UPHF)": [
+        "Laura Meyer"
+      ],
+      "Institut Catholique de Paris (ICP)": [
+        "Cécile Vidal"
+      ],
+      "Université des Antilles": [
+        "Diane Morin"
+      ],
+      "Université d'Artois": [
+        "Bastien Jacquet"
+      ],
+      "Institut Catholique de Lyon (UCLy)": [
+        "Paul Perrin"
+      ],
+      "Université Paris Cité": [
+        "Agathe Masson"
+      ],
+      "Université Jean Moulin Lyon 3": [
+        "Alice Dupond"
+      ],
+      "Université de Toulon": [
+        "Mathilde Roux"
+      ],
+      "Institut National Universitaire Champollion": [
+        "Olivier Leroux"
+      ],
+      "Université de Corse Pasquale Paoli": [
+        "Yanis Carron"
+      ],
+      "Université Paris 2 Panthéon-Assas": [
+        "Lina Meunier"
+      ]
+    }
+  },
+  "scores": {
+    "student_optimal": {
+      "score_final": 0.4364621617241939,
+      "topk_global": 0.4848484848484849,
+      "satisfaction_croisee": 0.6856819532220603,
+      "regret_global": 0.12272727272727274,
+      "details": {
+        "topk_etu": 0.6363636363636365,
+        "topk_uni": 0.33333333333333337,
+        "stab_etu": 0.0,
+        "stab_uni": 0.24545454545454548,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    },
+    "university_optimal": {
+      "score_final": 0.31157993966817504,
+      "topk_global": 0.4242424242424243,
+      "satisfaction_croisee": 0.5956705059646237,
+      "regret_global": -0.12272727272727274,
+      "details": {
+        "topk_etu": 0.18181818181818182,
+        "topk_uni": 0.6666666666666667,
+        "stab_etu": 0.0,
+        "stab_uni": -0.24545454545454548,
+        "alpha": 0.4,
+        "beta": 0.3,
+        "gamma": 0.3
+      }
+    }
+  }
+}

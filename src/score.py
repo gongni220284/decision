@@ -9,17 +9,16 @@ def score_final(
     matching_uni: Dict[str, List[str]],
     prefs_etus: Dict[str, List[str]],
     prefs_unis: Dict[str, List[str]], 
-    k: int =3,
+    k: int =1,
     alpha: float =0.4,
     beta: float =0.3,
     gamma: float =0.3
 ):
-    """
-    Calcule un score final basé sur :
-    - Top-K global (etu + uni)
-    - Satisfaction croisée
-    - Stabilité globale (1 - frustration)
-    """
+# 
+    # k=1
+    # alpha=0.15
+    # beta=0.15
+    # gamma=0.70
 
     topk_etu = top_k_etus(matching, prefs_etus, k)
     topk_uni = top_k_unis(matching, prefs_unis, k)
@@ -27,9 +26,6 @@ def score_final(
 
     S_cross = satisfaction_croisee_globale(matching, prefs_etus, prefs_unis)
 
-    Fbar_etu, stab_etu = frustration_etudiants(matching, prefs_etus, prefs_unis)
-    Fbar_uni, stab_uni = frustration_etablissements(matching, prefs_etus, prefs_unis)
-    stab_global = (stab_etu + stab_uni) / 2
 
     r_etu, r_uni, r_global = regret_global(matching, matching_uni, prefs_etus, prefs_unis)
     print(r_etu,r_uni, r_global)
@@ -51,10 +47,11 @@ def score_final(
         "regret_global":r_global,
         "optimality": optimality,
         "details": {
+            "k": k,
             "topk_etu": topk_etu,
             "topk_uni": topk_uni,
-            "stab_etu": r_etu,
-            "stab_uni": r_uni,
+            "r_etu": r_etu,
+            "r_uni": r_uni,
             "alpha": alpha,
             "beta": beta,
             "gamma": gamma

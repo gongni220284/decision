@@ -2,40 +2,7 @@
 from pathlib import Path
 from typing import List, Dict
 from copy import deepcopy
-
-def gale_shapley_student_optimal(prefs_students, prefs_unis, capacities):
-    """
-    Version simplifiée du GS étudiant-optimal.
-    Précondition : listes strictes.
-    """
-    free = list(prefs_students.keys())
-    next_prop = {s: 0 for s in prefs_students}
-    matching = {u: [] for u in prefs_unis}
-
-    while free:
-        s = free.pop(0)
-        if next_prop[s] >= len(prefs_students[s]):
-            continue
-
-        u = prefs_students[s][next_prop[s]]
-        next_prop[s] += 1
-
-        if len(matching[u]) < capacities[u]:
-            matching[u].append(s)
-        else:
-            ranking = prefs_unis[u]
-            worst = max(matching[u], key=lambda x: ranking.index(x))
-
-            if ranking.index(s) < ranking.index(worst):
-                matching[u].remove(worst)
-                matching[u].append(s)
-                free.append(worst)
-            else:
-                free.append(s)
-    
-    return matching
-
-
+from algorithms import gale_shapley_etudiant_optimal
 def build_shortlists(matching, prefs_students, prefs_unis):
     """
     Construit les shortlists (réduction des listes de préférence).
@@ -44,17 +11,16 @@ def build_shortlists(matching, prefs_students, prefs_unis):
     S = deepcopy(prefs_students)
     U = deepcopy(prefs_unis)
 
-    # Suppression des pairs impossibles selon matching optimal
     inv = {s: u for u, lst in matching.items() for s in lst}
 
-    # 1) pour chaque étudiant, on coupe les universités en dessous de son match
+    #  pour chaque étudiant, on coupe les universités en dessous de son match
     for s, prefs in S.items():
         u = inv.get(s)
         if u in prefs:
             cut = prefs.index(u)
             S[s] = prefs[:cut+1]
 
-    # 2) pour chaque université, coupe sous le plus mauvais étudiant accepté
+    #  pour chaque université, coupe sous le plus mauvais étudiant accepté
     for u, prefs in U.items():
         lst = matching[u]
         if lst:
@@ -67,10 +33,6 @@ def build_shortlists(matching, prefs_students, prefs_unis):
 
 
 def find_rotations(short_students, short_unis, matching):
-    """
-    Détecte toutes les rotations présentes dans le matching étudiant-optimal.
-    Implémentation simplifiée mais conforme à Irving.
-    """
     inv = {s: u for u, lst in matching.items() for s in lst}
     rotations = []
 
@@ -109,16 +71,12 @@ def eliminate_rotation(matching, rotation, prefs_students, prefs_unis, capacitie
         new_prefs[s] = [u_next] + lst
 
     # Relancer GS avec les prefs modifiées
-    return gale_shapley_student_optimal(new_prefs, prefs_unis, capacities)
+    return gale_shapley_etudiant_optimal(new_prefs, prefs_unis, capacities)
 
 
 def enumerate_all_stable_matchings(prefs_students, prefs_unis, capacities):
-    """
-    Génère tous les matchings stables en explorant les rotations.
-    Version simplifiée basée sur élimination successive.
-    """
 
-    match_opt = gale_shapley_student_optimal(prefs_students, prefs_unis, capacities)
+    match_opt = gale_shapley_etudiant_optimal(prefs_students, prefs_unis, capacities)
     short_s, short_u = build_shortlists(match_opt, prefs_students, prefs_unis)
     rotations = find_rotations(short_s, short_u, match_opt)
 
@@ -129,7 +87,6 @@ def enumerate_all_stable_matchings(prefs_students, prefs_unis, capacities):
     while frontier:
         m = frontier.pop()
 
-        # recalculer shortlists pour ce matching
         s_short, u_short = build_shortlists(m, prefs_students, prefs_unis)
         rots = find_rotations(s_short, u_short, m)
 

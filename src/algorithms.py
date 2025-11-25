@@ -10,7 +10,7 @@ app = typer.Typer()
 
 
 
-def gale_shapley_etudiant_otimal(prefs_etus: Dict[str, List[str]],
+def gale_shapley_etudiant_optimal(prefs_etus: Dict[str, List[str]],
                                  prefs_unis: Dict[str, List[str]],
                                  capacities: Dict[str, int]) -> Dict[str, List[str]]:
     

@@ -3,8 +3,6 @@ import math
 
 def satisfaction_individuelle(rang: int, taille: int) -> float:
     """
-    Convertit un rang (0-indexé) et la taille de la liste
-    en une satisfaction normalisée entre 0 et 1 :
     S = (n - r - 1) / (n - 1)
     """
     if taille <= 1:
@@ -17,13 +15,6 @@ def satisfaction_croisee_globale(
     prefs_etus: Dict[str, List[str]],
     prefs_unis: Dict[str, List[str]]
 ) -> float:
-    """
-    Calcule un score global de satisfaction croisée
-    entre étudiants et universités, basé sur la moyenne
-    harmonique des satisfactions individuelles.
-
-    Retourne un score entre 0 et 1.
-    """
 
     scores_pairs = []
 
@@ -41,13 +32,13 @@ def satisfaction_croisee_globale(
 
             # Rang de l'université dans la liste de l'étudiant
             if uni not in prefs_etu:
-                # L'étudiant n'a pas classé cette université : satisfaction nulle côté étudiant
+                # L'étudiant n'a pas classé cette université: satif null
                 S_etu = 0.0
             else:
                 rang_etu = prefs_etu.index(uni)
                 S_etu = satisfaction_individuelle(rang_etu, taille_etu)
 
-            # Rang de l'étudiant dans la liste de l'université
+            #rng de l'étudiant dans la liste de l'université
             if etu not in prefs_uni:
                 S_uni = 0.0
             else:

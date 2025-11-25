@@ -15,7 +15,7 @@ app = typer.Typer()
 def main(
     etudiants_json: Path = typer.Argument(..., help="Chemin du fichier JSON contenant les noms des étudiants."),
     etablissements_json: Path = typer.Argument(..., help="Chemin du fichier JSON contenant les noms des établissements."),
-    output_dir: Path = typer.Option("./results", help="Dossier de sortie pour sauvegarder les préférences.")
+    output_dir: Path = typer.Option("./results_rapport", help="Dossier de sortie pour sauvegarder les préférences.")
 ):
 
     etudiants_data = load_data_from_json(etudiants_json)
@@ -101,56 +101,32 @@ def main(
     typer.echo(score_univ_opt)
 
 
-    # -------------------------------
-    #  PREPARATION POUR VISUALISATION
-    # -------------------------------
-
-    results = [
-        {
-            "label": "Étudiant-optimal",
-            "score_final": score_etud_opt["score_final"],
-            "topk_global": score_etud_opt["topk_global"],
-            "satisfaction_croisee": score_etud_opt["satisfaction_croisee"],
-            "regret_global": score_etud_opt["regret_global"],
-            "optimalité": score_etud_opt["optimality"]
-        },
-        {
-            "label": "Université-optimal",
-            "score_final": score_univ_opt["score_final"],
-            "topk_global": score_univ_opt["topk_global"],
-            "satisfaction_croisee": score_univ_opt["satisfaction_croisee"],
-            "regret_global": score_univ_opt["regret_global"],
-            "optimalité": score_univ_opt["optimality"]
-        }
-    ]
+    print(score_etud_opt)
 
 
-    # -------------------------------
-    # VISUALISATIONS
-    # -------------------------------
 
-    typer.secho("\n--- Visualisations ---", fg=typer.colors.BLUE)
+    # typer.secho("\n--- Visualisations ---", fg=typer.colors.BLUE)
 
-    from visualisation import (
-        plot_satisfaction_vs_scorefinal,
-        plot_score_vs_weights, 
-        # plot_components_vs_weights, 
-        plot_matching_components, 
-        plot_score_vs_weights_recompute
-    )
+    # from visualisation import (
+    #     plot_satisfaction_vs_scorefinal,
+    #     plot_score_vs_weights, 
+    #     # plot_components_vs_weights, 
+    #     plot_matching_components, 
+    #     plot_score_vs_weights_recompute
+    # )
 
     # Scatter Satisfaction vs Score Final
-    plot_satisfaction_vs_scorefinal(results)
-    plot_score_vs_weights_recompute(
-    score_final,
-    matching_etudiant_opt,      # matching à analyser
-    matching_etudiant_opt,      # matching idéal côté étudiants
-    matching_universite_opt,    # matching idéal côté universités
-    prefs_etudiants,
-    prefs_uni,
-    k=3,
-    step=0.1
-)
+    # plot_satisfaction_vs_scorefinal(results)
+#     plot_score_vs_weights_recompute(
+#     score_final,
+#     matching_etudiant_opt,      # matching à analyser
+#     matching_etudiant_opt,      # matching idéal côté étudiants
+#     matching_universite_opt,    # matching idéal côté universités
+#     prefs_etudiants,
+#     prefs_uni,
+#     k=3,
+#     step=0.1
+# )
     # # Variation du score final selon alpha, beta, gamma = 1 - alpha - beta
     # plot_score_vs_weights(
     #     score_final,
@@ -167,7 +143,6 @@ def main(
 
 
     typer.secho("\n--- Fin ---", fg=typer.colors.BRIGHT_GREEN)
-        # ----------------- Sauvegarde -----------------
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     output_dir = Path(f"{output_dir}/{timestamp}")
     output_dir.mkdir(parents=True, exist_ok=True)

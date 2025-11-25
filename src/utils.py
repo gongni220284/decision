@@ -1,5 +1,4 @@
 import json
-import typer
 from pathlib import Path
 
 

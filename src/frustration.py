@@ -3,9 +3,7 @@ from typing import Dict, List
 
 
 def frustration_etudiants(matching: Dict[str, List[str]], prefs_etus: Dict[str, List[str]], prefs_unis: Dict[str, List[str]]):
-    ''''
-    Mesure combien d'établissements auraient préféré cet étudiant à quelqu'un qu'ils acceptent
-    '''
+
     etu_eta = {
         etu: eta
         for eta, etus in matching.items()
@@ -91,25 +89,16 @@ def score_global_frustration(
     prefs_etablissements,
     alpha=0.5
 ):
-    """
-    Calcule un score global basé uniquement sur :
-    - la stabilité côté étudiants (1 - frustration étudiante)
-    - la stabilité côté établissements (1 - frustration établissement)
 
-    alpha ∈ [0,1] : poids donné aux étudiants.
-    """
 
-    # Frustration étudiants
     Fbar_etu, stab_etu = frustration_etudiants(
         appariements, prefs_etudiants, prefs_etablissements
     )
 
-    # Frustration établissements
     Fbar_uni, stab_uni = frustration_etablissements(
         appariements, prefs_etudiants, prefs_etablissements
     )
 
-    # Score global pondéré
     score = alpha * stab_etu + (1 - alpha) * stab_uni
 
     return score, Fbar_etu, stab_etu, Fbar_uni, stab_uni

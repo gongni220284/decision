@@ -1,6 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+import json
+import matplotlib.pyplot as plt
+import pandas as pd
+from pathlib import Path
+import typer
+import seaborn as sns
+
 
 def plot_satisfaction_vs_scorefinal(results):
     avg_satisf = [(r["topk_global"] + r["satisfaction_croisee"]) / 2 for r in results]
@@ -31,10 +38,6 @@ def plot_score_vs_weights(
     k=3,
     steps=21
 ):
-    """
-    Calcule et affiche la variation du score final
-    en fonction de alpha et beta (gamma = 1 - alpha - beta).
-    """
 
     alphas = np.linspace(0, 1, steps)
     betas  = np.linspace(0, 1, steps)
@@ -75,86 +78,6 @@ def plot_score_vs_weights(
     plt.grid(True)
     plt.show()
 
-
-# def plot_score_vs_weights(score_fn, matching, prefs_etus, prefs_unis, k=3, steps=11):
-#     alphas = np.linspace(0, 1, steps)
-#     betas = np.linspace(0, 1, steps)
-
-#     pts = []
-#     vals = []
-
-#     for a in alphas:
-#         for b in betas:
-#             g = 1 - a - b
-#             if g >= 0:
-#                 res = score_fn(matching, prefs_etus, prefs_unis, k, a, b, g)
-#                 pts.append((a, b))
-#                 vals.append(res["score_final"])
-
-#     pts = np.array(pts)
-#     vals = np.array(vals)
-
-#     plt.figure()
-#     sc = plt.scatter(pts[:, 0], pts[:, 1], c=vals)
-#     plt.xlabel("alpha")
-#     plt.ylabel("beta")
-#     plt.title("Final Score for alpha, beta (gamma = 1 - alpha - beta)")
-#     plt.colorbar(sc, label="Final Score")
-#     plt.grid(True)
-#     plt.show()
-# import matplotlib.pyplot as plt
-# import numpy as np
-
-# def plot_components_vs_weights(results):
-#     """
-#     results : liste d'objets retournés par score_final
-#     """
-
-#     # Extraction des valeurs
-#     alphas = np.array([r["details"]["alpha"] for r in results])
-#     betas  = np.array([r["details"]["beta"]  for r in results])
-#     gammas = np.array([r["details"]["gamma"] for r in results])
-
-#     topk_vals       = np.array([r["topk_global"]           for r in results])
-#     cross_vals      = np.array([r["satisfaction_croisee"]  for r in results])
-#     optimality_vals = np.array([r["optimalite"]            for r in results])
-#     final_vals      = np.array([r["score_final"]           for r in results])
-
-#     # --- PLOTS ---
-
-#     titles = [
-#         "Top-K global",
-#         "Satisfaction croisée",
-#         "Optimalité (1 - regret)",
-#         "Score final"
-#     ]
-    
-#     datasets = [
-#         topk_vals,
-#         cross_vals,
-#         optimality_vals,
-#         final_vals
-#     ]
-
-#     plt.figure(figsize=(14, 12))
-
-#     for i, (title, data) in enumerate(zip(titles, datasets)):
-#         plt.subplot(2, 2, i+1)
-
-#         scatter = plt.scatter(alphas, betas, c=data, cmap="viridis")
-#         plt.colorbar(scatter, label=title)
-
-#         plt.xlabel("alpha")
-#         plt.ylabel("beta")
-#         plt.title(f"{title}\n(gamma = 1 - alpha - beta)")
-#         plt.grid(True)
-
-#     plt.tight_layout()
-#     plt.show()
-
-
-import matplotlib.pyplot as plt
-import numpy as np
 
 def plot_matching_components(results):
     labels = [r["label"] for r in results]
@@ -240,3 +163,174 @@ def plot_score_vs_weights_recompute(
     plt.title(f"Variation du Score Final\n(step = {step}, gamma = 1 - alpha - beta)")
     plt.grid(True)
     plt.show()
+
+
+
+app = typer.Typer()
+
+@app.command()
+def main():
+
+    import json
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    import seaborn as sns
+    from pathlib import Path
+
+    sns.set(style="darkgrid", context="talk")  
+
+    result_path = Path("./results_rapport/")
+    records = []
+
+
+    for time_dir in result_path.iterdir():
+        json_file = time_dir / "preference_et_resultats.json"
+        if not json_file.exists():
+            continue
+
+        with open(json_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        for matching_name, result in data["scores"].items():
+            details = result["details"]
+
+            records.append({
+                "run_dir": time_dir.name,
+                "matching": matching_name,
+                "score_final": result["score_final"],
+                "alpha": details["alpha"],
+                "beta": details["beta"],
+                "gamma": details["gamma"],
+                "k": details["k"]
+            })
+
+    df = pd.DataFrame(records)
+    
+
+    print("\n==============================")
+    print(" MOYENNES DES SCORES PAR PARAMÈTRE ")
+    print("==============================")
+
+    print("\n-> Moyenne du score final par alpha :")
+    print(df.groupby("alpha")["score_final"].mean())
+
+    print("\n-> Moyenne du score final par beta :")
+    print(df.groupby("beta")["score_final"].mean())
+
+    print("\n-> Moyenne du score final par gamma :")
+    print(df.groupby("gamma")["score_final"].mean())
+
+    print("\n-> Moyenne du score final par k :")
+    print(df.groupby("k")["score_final"].mean())
+    print("\n==============================")
+    print(" MOYENNES PAR COMBINAISON (alpha, beta, gamma, k) ")
+    print("==============================")
+
+    df_mean_full = df.groupby(["alpha", "beta", "gamma", "k"])["score_final"].mean()
+    print(df_mean_full)
+
+    print("\n\n\n\n")
+    df_mean = df.groupby(["alpha", "beta", "gamma", "k"]).agg(
+    score_moyen=("score_final", "mean"),
+    count=("score_final", "count")
+    ).reset_index()
+
+    print("\n==============================")
+    print(" MOYENNES PAR COMBINAISON UNIQUE (alpha, beta, gamma, k) ")
+    print("==============================\n")
+    print(df_mean.to_string(index=False))
+
+    parameters = ["alpha", "beta", "gamma", "k"]
+    colors = sns.color_palette("tab10", len(parameters))
+
+    plt.figure(figsize=(12, 7))
+
+    for color, param in zip(colors, parameters):
+        plt.scatter(df[param], df["score_final"], s=80, alpha=0.75,
+                    label=param.upper(), color=color)
+
+    plt.xlabel("Paramètres")
+    plt.ylabel("Score final")
+    plt.title("Score final en fonction de chaque paramètre (visualisation améliorée)")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+
+    sns.pairplot(df, vars=["alpha", "beta", "gamma", "k"],
+        hue="score_final", palette="viridis")
+    plt.show()
+
+
+
+
+    plt.figure(figsize=(12, 7))
+
+    plt.scatter(df["alpha"], df["score_final"], s=80, c=df["k"], cmap="viridis")
+    plt.xlabel("alpha")
+    plt.ylabel("Score final")
+    plt.title("Score final en fonction de alpha et k (sans annotations)")
+    plt.colorbar(label="k")
+    plt.tight_layout()
+    plt.show()
+
+
+
+    df_mean = df.groupby(["alpha", "beta", "gamma", "k"]).agg(
+        score_moyen=("score_final", "mean"),
+        count=("score_final", "count")
+    ).reset_index()
+
+    plt.figure(figsize=(14, 8))
+
+    plt.scatter(
+        df_mean["alpha"], df_mean["score_moyen"],
+        s=180, c=df_mean["k"], cmap="magma",
+        marker="o", alpha=0.85,
+        label="alpha"
+    )
+
+    plt.scatter(
+        df_mean["beta"], df_mean["score_moyen"],
+        s=180, c=df_mean["k"], cmap="magma",
+        marker="s", alpha=0.85,
+        label="beta"
+    )
+
+
+    plt.scatter(
+        df_mean["gamma"], df_mean["score_moyen"],
+        s=180, c=df_mean["k"], cmap="magma",
+        marker="^", alpha=0.85,
+        label="gamma"
+    )
+
+    plt.xlabel("Valeur du paramètre")
+    plt.ylabel("Score moyen")
+    plt.title("Score moyen selon alpha (o), beta (□) et gamma (△)")
+    plt.colorbar(label="k")
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+
+    df_mean = df.groupby(["alpha", "beta", "gamma", "k"]).agg(
+        score_moyen=("score_final", "mean"),
+        count=("score_final", "count")
+    ).reset_index()
+
+    plt.figure(figsize=(12, 7))
+    plt.scatter(df_mean["alpha"], df_mean["score_moyen"],
+                s=200, c=df_mean["k"], cmap="magma", alpha=0.8)
+    plt.xlabel("alpha")
+    plt.ylabel("Score moyen")
+    plt.title("Score moyen par combinaison (sans annotations)")
+    plt.colorbar(label="k")
+    plt.tight_layout()
+    plt.show()
+
+
+if __name__ == "__main__":
+    app()

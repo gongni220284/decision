@@ -15,44 +15,42 @@ def satisfaction_croisee_globale(
     prefs_etus: Dict[str, List[str]],
     prefs_unis: Dict[str, List[str]]
 ) -> float:
-
-    scores_pairs = []
-
+    
+    #satisfaction moyenne des étudiants
+    scores_etus = []
     for uni, etus in matching.items():
-        prefs_uni = prefs_unis[uni]
-        taille_uni = len(prefs_uni)
-
         for etu in etus:
-            # Si l'étudiant n'a pas de préférences, on ignore
             if etu not in prefs_etus:
                 continue
-
+            
             prefs_etu = prefs_etus[etu]
             taille_etu = len(prefs_etu)
-
-            # Rang de l'université dans la liste de l'étudiant
+            
             if uni not in prefs_etu:
-                # L'étudiant n'a pas classé cette université: satif null
                 S_etu = 0.0
             else:
                 rang_etu = prefs_etu.index(uni)
                 S_etu = satisfaction_individuelle(rang_etu, taille_etu)
-
-            #rng de l'étudiant dans la liste de l'université
+            
+            scores_etus.append(S_etu)
+    
+    S_etu_global = sum(scores_etus) / len(scores_etus) if scores_etus else 0.0
+    
+    #satisfaction moyenne des universités
+    scores_unis = []
+    for uni, etus in matching.items():
+        prefs_uni = prefs_unis[uni]
+        taille_uni = len(prefs_uni)
+        
+        for etu in etus:
             if etu not in prefs_uni:
                 S_uni = 0.0
             else:
                 rang_uni = prefs_uni.index(etu)
                 S_uni = satisfaction_individuelle(rang_uni, taille_uni)
-
-            if S_etu <= 0 or S_uni <= 0:
-                S_cross = 0.0
-            else:
-                S_cross = 2 * S_etu * S_uni / (S_etu + S_uni)
-
-            scores_pairs.append(S_cross)
-
-    if not scores_pairs:
-        return 0.0
-
-    return sum(scores_pairs) / len(scores_pairs)
+            
+            scores_unis.append(S_uni)
+    
+    S_uni_global = sum(scores_unis) / len(scores_unis) if scores_unis else 0.0
+    
+    return (S_etu_global + S_uni_global) / 2
